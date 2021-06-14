@@ -125,5 +125,12 @@ worldmap %>% ggplot(aes(x = xco, y = yco, col = tile)) + geom_point() + geom_vli
 # Convert all land = NA to FALSE as not previously assigned.  Could be made obsolete by defining as false
 worldmap$land <- ifelse(is.na(worldmap$land), FALSE, worldmap$land)
 
+# Admire the work
+colours <- c("1" = "white", "2" = "deepskyblue2", "16" = "black")
+worldmap %>% ggplot(aes(x = xco, y = yco, col = tile)) + 
+  geom_point() + scale_color_manual(values = colours) + 
+  theme(panel.background = element_rect(fill = 'black', colour = 'black'), panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
 # Save the worldmap dataframe
 save(worldmap, file = "/Users/lucasnwnht/Library/Mobile Documents/com~apple~CloudDocs/AAAFiles/AA_School/DataScience/WorldMap/worldmapLand.RData")
