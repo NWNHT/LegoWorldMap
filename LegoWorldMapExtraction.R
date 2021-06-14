@@ -8,7 +8,7 @@ library(tidyverse)
 library(imager)
 
 # Load full land dataframe
-load("./worldmapLand.RData")
+load("./CompletedMaps/worldmapLand.RData")
 
 # Create empty map dataframe
 worldmap <- data.frame(tile = factor(16, levels = (1:16)),land = NA, yco = rep(1:80, each = 128), xco = rep(1:128, times = 80))
