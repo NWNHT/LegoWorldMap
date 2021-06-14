@@ -6,7 +6,7 @@
 library(tidyverse)
 
 # Load full land dataframe
-load("/Users/lucasnwnht/Library/Mobile Documents/com~apple~CloudDocs/AAAFiles/AA_School/DataScience/WorldMap/worldmapLand.RData")
+load("./worldmapLand.RData")
 
 # Plot the map
 worldmap %>% ggplot(aes(x = xco, y = yco, col = tile)) + geom_point()

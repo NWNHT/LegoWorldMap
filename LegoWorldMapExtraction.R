@@ -8,7 +8,7 @@ library(tidyverse)
 library(imager)
 
 # Load full land dataframe
-load("/Users/lucasnwnht/Library/Mobile Documents/com~apple~CloudDocs/AAAFiles/AA_School/DataScience/WorldMap/worldmapLand.RData")
+load("./worldmapLand.RData")
 
 # Create empty map dataframe
 worldmap <- data.frame(tile = factor(16, levels = (1:16)),land = NA, yco = rep(1:80, each = 128), xco = rep(1:128, times = 80))
@@ -17,7 +17,7 @@ worldmap <- data.frame(tile = factor(16, levels = (1:16)),land = NA, yco = rep(1
 worldmap %>% ggplot(aes(x = xco, y = yco, col = tile)) + geom_point()
 
 # Load in white and black image
-im <- load.image("/Users/lucasnwnht/Desktop/mono.jpg")
+im <- load.image("./mono.jpg")
 
 # Resize image for fun I guess, I don't think this actually helped, it likely didn't
 imscale <- 17
