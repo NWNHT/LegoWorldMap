@@ -134,3 +134,18 @@ worldmap %>% ggplot(aes(x = xco, y = yco, col = tile)) +
 
 # Save the worldmap dataframe
 save(worldmap, file = "/Users/lucasnwnht/Library/Mobile Documents/com~apple~CloudDocs/AAAFiles/AA_School/DataScience/WorldMap/worldmapLand.RData")
+
+# Colours in order:
+# White (Plate) – 3064
+# Dark Blue – 393 - 0A3463
+# Medium Azure – 1607 - 36AEBF
+# Teal – 1879 - 467083
+# Bright Green – 601 - 4B9F4A
+# Lime – 1060 - BBE90B
+# Tan – 725 - E4CD9E
+# Bright Orange – 599 - F8BB3D
+# Orange – 601 - FE8A18
+# Coral – 601 - FF698F
+
+
+
