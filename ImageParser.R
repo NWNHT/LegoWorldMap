@@ -55,7 +55,7 @@ imageMap %>% ggplot(aes(x, -y, col = rgb(R, G, B))) + geom_point(size = 4) + sca
 
 colours <- c("1" = "white","2" = "#0A3463", "3" = "#36AEBF", "4" = "#467083", "5" = "#4B9F4A", "6"= "#BBE90B", "7" = "#E4CD9E", "8" = "#F8BB3D", "9" = "#FE8A18", "10" = "#FF698F", "16" = "black")
 imageMap %>% ggplot(aes(x = x, y = -y, col = tile)) + 
-  geom_point(size = 3) + scale_color_manual(values = colours) + 
+  geom_point(size = 5) + scale_color_manual(values = colours) + 
   theme(panel.background = element_rect(fill = 'black', colour = 'black'), panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
 

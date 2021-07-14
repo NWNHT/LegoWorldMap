@@ -9,7 +9,10 @@ library(tidyverse)
 load("./CompletedMaps/worldmapLand.RData")
 
 # Plot the map
-worldmap %>% ggplot(aes(x = xco, y = yco, col = tile)) + geom_point()
+colours <- c("1" = "white","2" = "#0A3463", "3" = "#36AEBF", "4" = "#467083", "5" = "#4B9F4A", "6"= "#BBE90B", "7" = "#E4CD9E", "8" = "#F8BB3D", "9" = "#FE8A18", "10" = "#FF698F", "16" = "black")
+worldmap %>% ggplot(aes(x = xco, y = yco, col = tile)) + 
+  geom_point(size = 1) + scale_color_manual(values = colours) + 
+  theme(panel.background = element_rect(fill = 'black', colour = 'black'), panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
 # scale_color_manual(values = c())
 
@@ -21,6 +24,14 @@ adjacent4 <- array(c(c(1,-1,0,0), c(0,0,1,-1)), dim = c(4,2))
 adjacent8 <- array(c(c(1,1,1,0,0,-1,-1,-1), c(-1, 0, 1, -1, 1, -1, 0, 1)), dim = c(8,2))
 adjacent4Level2 <- array(c(c(-1, 0, 1, -2, -1, 1, 2, -2, 2, -2, -1, 1, 2, -1, 0, 1), c(2, 2, 2, 1, 1, 1, 1, 0, 0, -1, -1, -1, -1, -2, -2, -2)), dim = c(16, 2))
 adjacent8Level2 <- array(c(c(-2, -1, 0, 1, 2, -2, 2, -2, 2, -2, 2, -2, -1, 0, 1, 2), c(2, 2, 2, 2, 2, 1, 1, 0, 0, -1, -1, -2, -2, -2, -2, -2)), dim = c(16, 2))
+
+# Create dataframe for adjacent, filter for diamond.
+adDist <- 6
+adjacentDist <- data.frame(x = rep(-adDist:adDist, times = 2*adDist + 1), y = rep(-adDist:adDist, each = 2*adDist + 1))
+adjacentDist <- adjacentDist[(abs(adjacentDist$x) + abs(adjacentDist$y) < adDist) & (abs(adjacentDist$x) < adDist - 1) & (abs(adjacentDist$y) < adDist - 1),]
+
+
+
 shadowEast <- array(c(-1, 0), dim = c(1, 2))
 
 # Set the limits of the frame
@@ -66,7 +77,6 @@ for (i in 1:128) { # For all x
 
 
 
-
 # For adjacent8
 for (i in 1:128) { # For all x
   for (j in 1:80) { # For all y
@@ -96,6 +106,27 @@ for (i in 1:128) { # For all x
     }
   }
 }
+
+
+
+
+
+# For AdjacentDist
+for (i in 1:128) { # For all x
+  for (j in 1:80) { # For all y
+    if (!worldmap$land[(worldmap$xco == i) & (worldmap$yco == j)]) { # If land then ignore
+      for (k in 1:nrow(adjacentDist)) { # Cycle through adjacent array to check cells
+        if (worldmap$land[(worldmap$xco == min(max((i + adjacentDist$x[k]),1),maxx)) & (worldmap$yco == min(max((j + adjacentDist$y[k]), 1),maxy))]) {
+          worldmap$tile[(worldmap$xco == i) & (worldmap$yco == j)] <- 4
+          break
+        }
+      }
+    }
+  }
+}
+
+save(worldmap, file = "./CompletedMaps/worldmapAdjacentDist6.Rdata")
+
 
 
 

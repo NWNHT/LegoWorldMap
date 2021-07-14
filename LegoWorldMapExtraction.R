@@ -40,11 +40,11 @@ imdf <- imdf %>% mutate(white = ifelse((imdf$R > thres & imdf$G > thres & imdf$G
 
 
 # Plot monochrome map image from imdf dataframe and index edges(takes a while)
-imdf %>% ggplot(aes(x, -y, col = white)) + geom_point() +
- geom_hline(yintercept = -87, col = "red") +
- geom_hline(yintercept = -1349, col = "red") +
- geom_vline(xintercept = 3, col = "red") +
- geom_vline(xintercept = 2174, col = "red")
+# imdf %>% ggplot(aes(x, -y, col = white)) + geom_point() +
+#  geom_hline(yintercept = -87, col = "red") +
+#  geom_hline(yintercept = -1349, col = "red") +
+#  geom_vline(xintercept = 3, col = "red") +
+#  geom_vline(xintercept = 2174, col = "red")
 
 # Create vectors for samples, values for beginning and end are as determined above
 #     Note that the length of ysample is 75, top 5 rows are blank, this shows up elsewhere
