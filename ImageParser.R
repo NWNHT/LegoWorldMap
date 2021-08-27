@@ -1,6 +1,8 @@
 library(tidyverse)
 library(imager)
 
+# Work in Progress #
+
 # Load in the image
 im <- load.image("./ReferenceImages/rainbowApple.png")
 

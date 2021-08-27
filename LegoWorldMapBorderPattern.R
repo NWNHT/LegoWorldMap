@@ -126,7 +126,7 @@ for (i in 1:128) { # For all x
 }
 
 save(worldmap, file = "./CompletedMaps/worldmapAdjacentDist6.Rdata")
-
+load("./CompletedMaps/worldmapAdjacentDist6.Rdata")
 
 
 
@@ -151,10 +151,14 @@ save(worldmap, file = "./CompletedMaps/worldmapShadowEast.Rdata")
 
 # Plot the map with custom colours
 colours <- c("1" = "white","2" = "#0A3463", "3" = "#36AEBF", "4" = "#467083", "5" = "#4B9F4A", "6"= "#BBE90B", "7" = "#E4CD9E", "8" = "#F8BB3D", "9" = "#FE8A18", "10" = "#FF698F", "16" = "black")
+xsample <- seq(from = 16.5, by = 16, length.out = 7)
+ysample <- seq(from = 16.5, by = 16, length.out = 4)
 worldmap %>% ggplot(aes(x = xco, y = yco, col = tile)) + 
-  geom_point(size = 3) + scale_color_manual(values = colours) + 
+  geom_point(size = 3) + 
+  geom_hline(yintercept = ysample, col = "red") + 
+  geom_vline(xintercept = xsample, col = "red") +
+  scale_color_manual(values = colours) + 
   theme(panel.background = element_rect(fill = 'black', colour = 'black'), panel.grid.major = element_blank(), panel.grid.minor = element_blank())
-
 
 
 
