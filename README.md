@@ -13,4 +13,4 @@ ImageParser: Parse any image to sample in a grid for translation to lego
 LegoWorldMapDisplay: This can be used just to display the maps that are already created in the CompletedMaps directory
 
 
-Completed map dataframes are stored in the CompletedMaps directory
+Completed map dataframes are stored in the CompletedMaps directory.  Images of completed maps are stored in the CompletedMapsImages directory.
